@@ -5,6 +5,9 @@ import lombok.*;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.enums.Genre;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.enums.Language;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -25,7 +28,7 @@ public class Song {
 
     @NonNull
     @Column(name = "duration", nullable = false)
-    private String duration;
+    private Duration duration;
 
     @NonNull
     @Column(name = "cover", nullable = false)
@@ -41,7 +44,7 @@ public class Song {
     private String lyrics;
 
     @Column(name = "release_date")
-    private String releaseDate;
+    private LocalDateTime releaseDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "language")

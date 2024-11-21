@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.ids.SongPlaylistId;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -26,5 +28,5 @@ public class SongPlaylist {
     private Playlist playlist;
 
     @Column(name = "added_at")
-    private String addedAt; // Ví dụ: ngày bài hát được thêm vào playlist
+    private LocalDateTime addedAt; // Ví dụ: ngày bài hát được thêm vào playlist
 }
