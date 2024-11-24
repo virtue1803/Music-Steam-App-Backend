@@ -50,4 +50,6 @@ public class AlbumService implements IServices<Album, Long> {
     public Iterator<Album> getAll() {
         return albumRepository.findAll().iterator();
     }
+
+
 }

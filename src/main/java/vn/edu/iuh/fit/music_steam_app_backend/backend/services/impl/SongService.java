@@ -50,4 +50,10 @@ public class SongService implements IServices<Song, Long> {
     public Iterator<Song> getAll() {
         return songRepository.findAll().iterator();
     }
+
+    public Optional<Song> findSongByTitle(String title) {
+        return songRepository.findByTitle(title);
+    }
+
+
 }
