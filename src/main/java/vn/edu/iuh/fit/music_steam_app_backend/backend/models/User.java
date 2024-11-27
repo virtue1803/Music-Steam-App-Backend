@@ -17,8 +17,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
-    @Column(nullable = false, unique = true)
+
+    @Column( unique = true)
     private String username;
 
     @NonNull
@@ -26,11 +26,10 @@ public class User {
     private String password;
 
     @NonNull
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String email;
 
     @Enumerated(EnumType.STRING)
-    @NonNull
     @Column(name = "role", nullable = false)
     private Role role; // Enum liên kết tới vai trò người dùng
 }
