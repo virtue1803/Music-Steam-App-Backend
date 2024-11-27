@@ -3,6 +3,7 @@ package vn.edu.iuh.fit.music_steam_app_backend.backend.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.exceptions.EntityIdNotFoundException;
+import vn.edu.iuh.fit.music_steam_app_backend.backend.ids.FavoriteId;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.models.Favorite;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.repositories.FavoriteRepository;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.services.IServices;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FavoriteService implements IServices<Favorite, Long> {
+public class FavoriteService implements IServices<Favorite, FavoriteId> {
     
     @Autowired
     private FavoriteRepository favoriteRepository;
@@ -37,14 +38,17 @@ public class FavoriteService implements IServices<Favorite, Long> {
     }
 
     @Override
-    public void delete(Long id) throws EntityIdNotFoundException {
+    public void delete(FavoriteId id) throws EntityIdNotFoundException {
         favoriteRepository.delete(getById(id).orElseThrow(() -> new EntityIdNotFoundException(id + "")));
     }
 
     @Override
-    public Optional<Favorite> getById(Long id) throws EntityIdNotFoundException {
-        return Optional.of(favoriteRepository.findById(id).orElseThrow(() -> new EntityIdNotFoundException(id + "")));
+    public Optional<Favorite> getById(FavoriteId aLong) throws EntityIdNotFoundException {
+        return Optional.of(favoriteRepository.findById(aLong).orElseThrow(() -> new EntityIdNotFoundException(aLong + "")));
     }
+
+
+
 
     @Override
     public Iterator<Favorite> getAll() {

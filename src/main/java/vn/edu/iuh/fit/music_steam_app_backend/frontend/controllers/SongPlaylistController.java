@@ -34,7 +34,7 @@ public class SongPlaylistController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteSongPlaylist(@PathVariable Long id) {
+    public ResponseEntity<String> deleteSongPlaylist(@PathVariable SongPlaylistId id) {
         try {
             songPlaylistService.delete(id);
             return ResponseEntity.ok("SongPlaylist deleted successfully.");
@@ -44,7 +44,7 @@ public class SongPlaylistController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SongPlaylist> getSongPlaylistById(@PathVariable Long id) {
+    public ResponseEntity<SongPlaylist> getSongPlaylistById(@PathVariable SongPlaylistId id) {
         try {
             return ResponseEntity.ok(songPlaylistService.getById(id).orElseThrow(() -> new EntityIdNotFoundException("SongPlaylist not found")));
         } catch (EntityIdNotFoundException e) {

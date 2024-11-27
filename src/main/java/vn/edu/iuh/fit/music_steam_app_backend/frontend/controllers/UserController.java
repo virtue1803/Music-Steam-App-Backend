@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import vn.edu.iuh.fit.music_steam_app_backend.backend.dto.LoginRequest;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.exceptions.EntityIdNotFoundException;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.models.User;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.services.impl.UserService;
@@ -59,6 +60,17 @@ public class UserController {
             return ResponseEntity.ok(userService.updateUser(id, userDetails));
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        try {
+            // Xác thực người dùng
+            User user = userService.authenticate(loginRequest);
+            return ResponseEntity.ok(user); // Trả về thông tin người dùng
+        } catch (Exception e) {
+            return ResponseEntity.status(401).body("Invalid credentials");
         }
     }
 }

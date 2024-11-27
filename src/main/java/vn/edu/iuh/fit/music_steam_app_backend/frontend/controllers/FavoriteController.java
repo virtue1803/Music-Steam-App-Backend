@@ -34,7 +34,7 @@ public class FavoriteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteFavorite(@PathVariable Long id) {
+    public ResponseEntity<String> deleteFavorite(@PathVariable FavoriteId id) {
         try {
             favoriteService.delete(id);
             return ResponseEntity.ok("Favorite deleted successfully.");
@@ -44,7 +44,7 @@ public class FavoriteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Favorite> getFavoriteById(@PathVariable Long id) {
+    public ResponseEntity<Favorite> getFavoriteById(@PathVariable FavoriteId id) {
         try {
             return ResponseEntity.ok(favoriteService.getById(id).orElseThrow(() -> new EntityIdNotFoundException("Favorite not found")));
         } catch (EntityIdNotFoundException e) {

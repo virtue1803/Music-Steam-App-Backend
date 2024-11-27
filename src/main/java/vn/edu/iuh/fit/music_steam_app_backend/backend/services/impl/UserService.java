@@ -2,6 +2,8 @@ package vn.edu.iuh.fit.music_steam_app_backend.backend.services.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import vn.edu.iuh.fit.music_steam_app_backend.backend.dto.LoginRequest;
+import vn.edu.iuh.fit.music_steam_app_backend.backend.dto.UserDto;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.enums.Role;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.models.User;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.repositories.UserRepository;
@@ -61,7 +63,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User createUser(UserDTO userDTO) throws Exception {
+    public User createUser(UserDto userDTO) throws Exception {
         // Kiểm tra nếu email đã tồn tại
         if (userRepository.existsByEmail(userDTO.getEmail())) {
             throw new Exception("Email already exists");
@@ -76,9 +78,10 @@ public class UserService {
     }
 
     public User authenticate(LoginRequest loginRequest) throws Exception {
-        User user = userRepository.findByEmail(loginRequest.getEmail())
-                .orElseThrow(() -> new Exception("User not found"));
+        // Tìm người dùng theo email
+        User user = userRepository.findByEmail(loginRequest.getEmail());
 
+        // Kiểm tra mật khẩu
         if (!user.getPassword().equals(loginRequest.getPassword())) {
             throw new Exception("Invalid password");
         }
