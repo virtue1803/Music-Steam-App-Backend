@@ -1,6 +1,7 @@
 package vn.edu.iuh.fit.music_steam_app_backend.frontend.controllers;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,8 @@ import vn.edu.iuh.fit.music_steam_app_backend.backend.models.User;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.services.impl.UserService;
 
 import java.util.List;
-@CrossOrigin(origins = "https://snack-web-player.s3.us-west-1.amazonaws.com")
+@Slf4j
+@CrossOrigin(origins = {"https://snack-web-player.s3.us-west-1.amazonaws.com", "http://192.168.1.5:8081","http://localhost:19002","http://localhost:19000","http://localhost:5000"})
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
