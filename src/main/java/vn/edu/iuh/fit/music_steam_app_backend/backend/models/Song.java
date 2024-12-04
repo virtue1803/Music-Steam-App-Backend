@@ -50,6 +50,15 @@ public class Song {
     @Column(name = "language")
     private Language language; // Tham chiếu tới Enum Language
 
+    @Column(name = "plays")
+    private int playCount;
+
+    @Column(name = "tag")
+    private String tag;
+
+    @Column(name = "liked")
+    private Boolean liked;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "artist_id", nullable = false)
     private Artist artist;
