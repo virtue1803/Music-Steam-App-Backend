@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         // Cấu hình CORS cho phép mọi nguồn hoặc chỉ cho phép từ Snack Expo
         registry.addMapping("/api/**")
-                .allowedOrigins("https://snack-web-player.s3.us-west-1.amazonaws.com") // Địa chỉ của Snack Expo
+                .allowedOrigins("http://192.168.1.8","http://localhost:19000", "https://snack-web-player.s3.us-west-1.amazonaws.com","http://192.168.1.8:19000", "http://192.168.1.8:8080") // Địa chỉ của Snack Expo và localhost nếu chạy trên máy tính của bạn
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("Content-Type")
                 .allowCredentials(true);

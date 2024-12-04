@@ -11,7 +11,8 @@ import vn.edu.iuh.fit.music_steam_app_backend.backend.models.User;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.services.impl.UserService;
 
 import java.util.List;
-@CrossOrigin(origins = "https://snack-web-player.s3.us-west-1.amazonaws.com")
+@CrossOrigin(origins = {"http://localhost:19000", "https://snack-web-player.s3.us-west-1.amazonaws.com","http://192.168.1.8:8080:19000", "http://192.168.1.8:8080","http://192.168.1.8"})
+
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
