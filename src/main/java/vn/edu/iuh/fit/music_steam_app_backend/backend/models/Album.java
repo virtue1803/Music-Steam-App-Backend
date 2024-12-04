@@ -21,8 +21,8 @@ public class Album {
     private String title;
 
     @NonNull
-    @Column(name = "cover", nullable = false)
-    private String cover; // URL ảnh bìa album
+    @Column(name = "img", nullable = false)
+    private String img; // URL ảnh bìa album
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "artist_id", nullable = false)
