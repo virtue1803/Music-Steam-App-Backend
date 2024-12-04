@@ -55,5 +55,9 @@ public class SongService implements IServices<Song, Long> {
         return songRepository.findByTitle(title);
     }
 
+    public List<Song> getAllSong() {
+        return songRepository.findAll();
+    }
+
 
 }

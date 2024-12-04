@@ -7,7 +7,10 @@ import vn.edu.iuh.fit.music_steam_app_backend.backend.exceptions.EntityIdNotFoun
 import vn.edu.iuh.fit.music_steam_app_backend.backend.models.Song;
 import vn.edu.iuh.fit.music_steam_app_backend.backend.services.impl.SongService;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/songs")
@@ -51,15 +54,18 @@ public class SongController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity<List<Song>> getAllSongs() {
-        return ResponseEntity.ok((List<Song>) songService.getAll().next());
-    }
+
 
     @GetMapping("/findByTitle")
     public ResponseEntity<Song> findSongByTitle(@RequestParam String title) {
         return songService.findSongByTitle(title)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(404).body(null));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Song>> getAllSongs() {
+        List<Song> songs = songService.getAllSong();
+        return songs.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(songs);
     }
 }
