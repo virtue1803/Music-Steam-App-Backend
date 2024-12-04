@@ -50,7 +50,7 @@ public class Song {
     @Column(name = "language")
     private Language language; // Tham chiếu tới Enum Language
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "artist_id", nullable = false)
     private Artist artist;
 
