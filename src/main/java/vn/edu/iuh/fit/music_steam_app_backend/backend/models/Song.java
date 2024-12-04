@@ -53,8 +53,8 @@ public class Song {
     @Column(name = "plays")
     private int playCount;
 
-    @Column(name = "tag")
-    private String tag;
+    @Column(name = "tags")
+    private String tags;
 
     @Column(name = "liked")
     private Boolean liked;
