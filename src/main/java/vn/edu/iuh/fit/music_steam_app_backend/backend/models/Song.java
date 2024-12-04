@@ -31,8 +31,8 @@ public class Song {
     private Duration duration;
 
     @NonNull
-    @Column(name = "cover", nullable = false)
-    private String cover; // URL ảnh bìa bài hát
+    @Column(name = "image", nullable = false)
+    private String image; // URL ảnh bìa bài hát
 
     @Enumerated(EnumType.STRING)
     @NonNull
